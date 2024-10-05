@@ -1,12 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { StatusBar, StyleSheet } from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
+// import { createDrawerNavigator } from '@react-navigation/drawer'
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Routes from './src/pages/AppRoutes';
 
 export default function App() {
+  // const Tab = createBottomTabNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      {/* <Tab.Navigator> */}
+        <StatusBar backgroundColor={"#C19B8F"} barStyle={"light-content"} />
+        <Routes />
+      {/* </Tab.Navigator> */}
+    </NavigationContainer>
   );
 }
 
