@@ -1,10 +1,40 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+
 import * as Animatable from 'react-native-animatable'
+
 import { useNavigation } from '@react-navigation/native'
+
+import { AuthContext } from '../../context/AuthContext'
+import userAuth from '../../hooks/userAuth';
+
 
 export default function Index() {
   const navigation = useNavigation()
+  const { login, SignIn } = userAuth();
+
+  const [user, setUser]         = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading]   = useState(false);
+
+  const handleSubmit = async (e) => {
+    setLoading(true)
+
+    try {
+      e.preventDefault();
+      console.log(123)
+      console.log(user)
+      console.log(password)
+      login(user, password)
+      // SignIn();
+    } catch (e) {
+      console.error(e)
+      setLoading(false)
+    } finally {
+      setLoading(false)
+    }
+  };
+
 
   return (
     <View style={styles.container}>
@@ -14,15 +44,21 @@ export default function Index() {
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.label}>Email</Text>
-          <TextInput placeholder='Digite seu email' style={styles.input}></TextInput>
+        <TextInput placeholder='Digite seu email' style={styles.input}
+          onChangeText={(text) => setUser(text)}>
+        </TextInput>
 
-          <Text style={styles.label}>Senha</Text>
-          <TextInput placeholder='Digite sua senha' style={styles.input} secureTextEntry={true}></TextInput>
+        <Text style={styles.label}>Senha</Text>
+        <TextInput placeholder='Digite sua senha' style={styles.input}
+          secureTextEntry={true} onChangeText={(text) => setPassword(text)}>
+        </TextInput>
 
         <View style={styles.buttonAcess}>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('IndexBottomTab')}>
-            <Text style={styles.buttonText}>Acessar</Text>
+          {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('IndexBottomTab')}> TESTAR 'home' */}
+          <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.buttonText}>Acessar</Text>
           </TouchableOpacity>
+          
           <TouchableOpacity style={styles.buttonSignUp} onPress={() => navigation.navigate('Cadastro')}>
             <Text style={styles.buttonSignUpText}>Não possui uma conta? Registre-se</Text>
           </TouchableOpacity>

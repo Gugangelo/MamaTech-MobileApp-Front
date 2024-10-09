@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, Text, StyleSheet, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import { useNavigation } from '@react-navigation/native'
 import { Entypo } from '@expo/vector-icons';
@@ -8,7 +8,7 @@ import ItemMenu from '../../components/ItemMenu'
 
 export default function Index() {
   const navigation = useNavigation()
-  
+
   return (
     <View style={styles.container}>
 
@@ -35,6 +35,20 @@ export default function Index() {
           <ItemMenu></ItemMenu>
         </View>
 
+        <View style={styles.itemRow}>
+          <ItemMenu></ItemMenu>
+          <ItemMenu></ItemMenu>
+          <ItemMenu></ItemMenu>
+          <ItemMenu></ItemMenu>
+        </View>
+
+        <View style={styles.itemRow}>
+          <ItemMenu></ItemMenu>
+          <ItemMenu></ItemMenu>
+          <ItemMenu></ItemMenu>
+          <ItemMenu></ItemMenu>
+        </View>
+        
       </View>
     </View>
   )

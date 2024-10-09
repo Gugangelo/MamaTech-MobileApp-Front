@@ -3,10 +3,13 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 
 import * as Animatable from 'react-native-animatable';
 import { Dropdown } from 'react-native-element-dropdown';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../../context/AuthContext'
 
 
 export default function Index() {
   const navigation = useNavigation()
+  const { register } = useContext(AuthContext)
+
   const [examesReg, setExamesReg] = useState(null);
   const [tratOncologico, setTratOncologico] = useState(null);
   const [tipoDeTratamento, setTipoDeTratamento] = useState([]);
@@ -69,6 +72,21 @@ export default function Index() {
     { label: 'Sim, em certa medida', value: '2' },
     { label: 'Não', value: '3' }
   ];
+
+  // const handleSubmit = async (e) => {
+  //   setLoading(true)
+
+  //   try {
+  //     e.preventDefault();
+
+  //     login(user, password)
+  //   } catch (e) {
+  //     console.error(e)
+  //     setLoading(false)
+  //   } finally {
+  //     setLoading(false)
+  //   }
+  // };
 
 
   return (
@@ -166,6 +184,7 @@ export default function Index() {
             <Text style={styles.buttonText}>Avançar</Text>
           </TouchableOpacity>
           
+          {/* <TouchableOpacity style={styles.buttonSignIn} onPress={handleSubmit}> */}
           <TouchableOpacity style={styles.buttonSignIn} onPress={() => navigation.navigate('Login')}>
             <Text style={styles.buttonSignInText}>Já possui conta? Entre</Text>
           </TouchableOpacity>

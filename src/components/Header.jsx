@@ -1,20 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'
+import userAuth from '../hooks/userAuth'
 
 
 export default function Header() {
   const navigation = useNavigation()
-  
+  const { logout } = userAuth()
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      console.log(1)
+      logout()
+    } catch (e) {
+      console.error(e)
+      // setLoading(false)
+    } finally {
+      // setLoading(false)
+    }
+  };
+
   return (
     <View style={styles.container}>
 
       <View style={styles.header}>
         <View style={styles.homeAndSearch}>
           <TouchableOpacity>
-            <Feather style={styles.home} name="home" size={36} color="#000" />
+            <Feather style={styles.home} onPress={handleSubmit} name="home" size={36} color="#000" />
           </TouchableOpacity>
 
           <View style={styles.search}>

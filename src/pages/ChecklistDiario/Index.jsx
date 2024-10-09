@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Switch } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { Dropdown } from 'react-native-element-dropdown';
 import { useNavigation } from '@react-navigation/native';
@@ -9,62 +9,37 @@ import { AuthContext } from '../../context/AuthContext'
 export default function Index() {
   const navigation = useNavigation()
   const [genero, setGenero] = useState(null);
-  const [estadoCivil, setEstadoCivil] = useState(null);
-  const [nivelEscolaridade, setNivelEscolaridade] = useState(null);
-  const [cancer, setCancer] = useState(null);
+  const [difEngolir, setDifEngolir] = useState(false);
+  const toggleSwitch = () => {setDifEngolir(previousState => !previousState)
+    console.log(difEngolir)
+    console.log(genero)
+    console.log(123)
+    console.log(difEngolir)
+  }; // Função para alternar o estado
 
   const generos = [
     { label: 'Feminino', value: '1' },
     { label: 'Outro', value: '2' }
   ];
 
-  const estadosCivis = [
-    { label: 'Solteira', value: '1' },
-    { label: 'Casada', value: '2' },
-    { label: 'Viúva', value: '3' },
-    { label: 'Divorciada', value: '4' },
-    { label: 'Outro', value: '5' }
-  ];
-
-  const escolaridades = [
-    { label: 'Ensino Fundamental', value: '1' },
-    { label: 'Ensino Médio', value: '2' },
-    { label: 'Ensino Superior (Graduação)', value: '3' },
-    { label: 'Pós-graduação', value: '4' },
-    { label: 'Mestrado', value: '5' },
-    { label: 'Doutorado', value: '6' },
-    { label: 'Outro', value: '7' }
-  ];
-
-  const cancerResposta = [
-    { label: 'Sim', value: '1' },
-    { label: 'Não', value: '2' }
-  ];
-
-  const handleAdvance = () => {
-    if (cancer === '1') {
-      navigation.navigate('Login')
-    } else if (cancer === '2') {
-      navigation.navigate('Cadastro2')
-    }
-  }
-
-
   return (
     <View style={styles.container}>
       <Animatable.View animation="fadeInLeft" style={styles.containerHeader}>
-        <Text style={styles.title}>Registre sua conta</Text>
+        <Text style={styles.title}>TELA CHECKLIST</Text>
       </Animatable.View>
 
       <View style={styles.containerForm}>
         {/* Seção 1 */}
         <TextInput placeholder='Digite seu nome' style={styles.input} />
-        
-        <TextInput placeholder='Digite seu email' style={styles.input} />
-        
-        <TextInput placeholder='Digite sua senha' style={styles.input} secureTextEntry={true} />
-        
-        <TextInput placeholder='Data de nascimento' style={styles.input} />
+
+        <Text>O Switch está {difEngolir ? "Ativado" : "Desativado"}</Text>
+        <Switch
+          trackColor={{ false: "#767577", true: "#33ff00" }}
+          thumbColor={difEngolir ? "#ffffff" : "#f9f9f9"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}  // Função chamada quando alternado
+          value={difEngolir}  // Estado atual do Switch
+        />
 
         <Dropdown
           style={styles.dropdown}
@@ -76,41 +51,10 @@ export default function Index() {
           onChange={item => { setGenero(item.value); }}
         />
 
-        <Dropdown
-          style={styles.dropdown}
-          data={estadosCivis}
-          labelField="label"
-          valueField="value"
-          maxHeight={200}
-          placeholder='Estado civil'
-          value={estadoCivil}
-          onChange={item => { setEstadoCivil(item.value); }}
-        />
-
-        <Dropdown
-          style={styles.dropdown}
-          data={escolaridades}
-          labelField="label"
-          valueField="value"
-          maxHeight={200}
-          placeholder='Nível de escolaridade'
-          value={nivelEscolaridade}
-          onChange={item => { setNivelEscolaridade(item.value); }}
-        />
-
-        <Dropdown
-          style={styles.dropdown}
-          data={cancerResposta}
-          labelField="label"
-          valueField="value"
-          placeholder='Já foi diagnosticada com câncer?'
-          value={cancer}
-          onChange={item => { setCancer(item.value); }}
-        />
-
         <View style={styles.buttonAcess}>
-          <TouchableOpacity style={styles.button} onPress={handleAdvance}>
-            <Text style={styles.buttonText}>Avançar</Text>
+          {/* <TouchableOpacity style={styles.button} onPress={handleAdvance}> */}
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.buttonText}>Avançar</Text>
           </TouchableOpacity>
           
           <TouchableOpacity style={styles.buttonSignIn} onPress={() => navigation.navigate('Login')}>
