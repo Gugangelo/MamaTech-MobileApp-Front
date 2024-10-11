@@ -22,7 +22,7 @@ export default function Index() {
         </View>
 
         <View style={styles.itemRow}>
-          <ItemMenu></ItemMenu>
+          <ItemMenu itemTitle="IMC" navigateTo="IMC"></ItemMenu>
           <ItemMenu></ItemMenu>
           <ItemMenu></ItemMenu>
           <ItemMenu></ItemMenu>

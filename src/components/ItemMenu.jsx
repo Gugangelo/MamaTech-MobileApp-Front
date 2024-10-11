@@ -4,20 +4,20 @@ import { useNavigation } from '@react-navigation/native'
 import { Feather } from '@expo/vector-icons'
 
 
-export default function ItemMenu() {
+export default function ItemMenu(props) {
   const navigation = useNavigation()
 
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity style={styles.item}>
+      <TouchableOpacity style={styles.item} onPress={() => navigation.navigate(props.navigateTo)}>
 
         <View style={styles.icon}>
           <Feather style={styles.home} name="home" size={36} color="#000" />
           {/* {icon} */}
         </View>
 
-        <Text style={styles.iconName}>Dados Pessoais</Text>
+        <Text style={styles.iconName}>{props.itemTitle}</Text>
 
       </TouchableOpacity>
 
