@@ -15,7 +15,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -28,11 +31,14 @@
     },
     "plugins": [
       [
-      "expo-font",
+        "expo-font",
         {
-          "fonts": ["./src/assets/fonts/Anton-Regular.ttf"]
+          "fonts": [
+            "./src/assets/fonts/Anton-Regular.ttf"
+          ]
         }
-      ]
+      ],
+      "expo-secure-store"
     ]
   }
 }
