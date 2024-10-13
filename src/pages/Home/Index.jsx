@@ -22,31 +22,31 @@ export default function Index() {
         </View>
 
         <View style={styles.itemRow}>
-          <ItemMenu itemTitle="IMC" navigateTo="IMC"></ItemMenu>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
+          <ItemMenu itemTitle="Checklist diário" navigateTo="Checklist"></ItemMenu>
+          <ItemMenu itemTitle="Cálculo do IMC" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Dados Cadastrais" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Chat para dúvidas" navigateTo="IMC"></ItemMenu>
         </View>
 
         <View style={styles.itemRow}>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
+          <ItemMenu itemTitle="Receitas" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Consumo de água" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Autoexame" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Alimentos cancerígenos" navigateTo="IMC"></ItemMenu>
         </View>
 
         <View style={styles.itemRow}>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
+          <ItemMenu itemTitle="Ambientes alimentares" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Manejo dos sintomas" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Guia Alimentar" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Movimente-se" navigateTo="IMC"></ItemMenu>
         </View>
 
         <View style={styles.itemRow}>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
-          <ItemMenu></ItemMenu>
+          <ItemMenu itemTitle="E-Books" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Como ler um rótulo?" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="SuperTeg" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Amparo" navigateTo="IMC"></ItemMenu>
         </View>
         
       </View>

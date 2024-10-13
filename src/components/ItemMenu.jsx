@@ -52,7 +52,9 @@ const styles = StyleSheet.create({
   },
 
   iconName: {
-    width: 60,
+    width: 70,
+    height: 40,
+    fontSize: 12,
     textAlign: "center"
   }
 })

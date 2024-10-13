@@ -1,26 +1,47 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { Dropdown } from 'react-native-element-dropdown';
 import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../../context/AuthContext'
 
 
 export default function Index() {
   const navigation = useNavigation()
-  const [genero, setGenero] = useState(null);
   const [difEngolir, setDifEngolir] = useState(false);
-  const toggleSwitch = () => {setDifEngolir(previousState => !previousState)
-    console.log(difEngolir)
-    console.log(genero)
-    console.log(123)
-    console.log(difEngolir)
-  }; // Função para alternar o estado
+  const [dorEngolir, setDorEngolir] = useState(false);
+  const [sacPrecoce, setSacPrecoce] = useState(false);
+  const [difAbrirBoca, setDifAbrirBoca] = useState(false);
+  const [diarreia, setDiarreia] = useState(false);
+  const [constipacao, setConstipacao] = useState(false);
 
-  const generos = [
-    { label: 'Feminino', value: '1' },
-    { label: 'Outro', value: '2' }
-  ];
+  const toggleSwitch = (switchName) => {
+    switch (switchName) {
+      case 'difEngolir':
+        setDifEngolir((prevState) => !prevState);
+        break;
+      case 'dorEngolir':
+        setDorEngolir((prevState) => !prevState);
+        break;
+      case 'sacPrecoce':
+        setSacPrecoce((prevState) => !prevState);
+        break;
+      case 'difAbrirBoca':
+        setDifAbrirBoca((prevState) => !prevState);
+        break;
+      case 'diarreia':
+        setDiarreia((prevState) => !prevState);
+        break;
+      case 'constipacao':
+        setConstipacao((prevState) => !prevState);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleAdvance = () => {
+    console.log(difEngolir)
+  }
+
 
   return (
     <View style={styles.container}>
@@ -29,36 +50,76 @@ export default function Index() {
       </Animatable.View>
 
       <View style={styles.containerForm}>
-        {/* Seção 1 */}
-        <TextInput placeholder='Digite seu nome' style={styles.input} />
+        <View style={styles.input}>
+          <Text>Dificuldade de engolir</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#33ff00" }}
+            thumbColor={difEngolir ? "#ffffff" : "#f9f9f9"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => toggleSwitch('difEngolir')}  // Função chamada quando alternado
+            value={difEngolir}  // Estado atual do Switch
+          />
+        </View>
 
-        <Text>O Switch está {difEngolir ? "Ativado" : "Desativado"}</Text>
-        <Switch
-          trackColor={{ false: "#767577", true: "#33ff00" }}
-          thumbColor={difEngolir ? "#ffffff" : "#f9f9f9"}
-          ios_backgroundColor="#3e3e3e"
-          onValueChange={toggleSwitch}  // Função chamada quando alternado
-          value={difEngolir}  // Estado atual do Switch
-        />
+        <View style={styles.input}>
+          <Text>Dor ao engolir</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#33ff00" }}
+            thumbColor={dorEngolir ? "#ffffff" : "#f9f9f9"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => toggleSwitch('dorEngolir')}
+            value={dorEngolir}
+          />
+        </View>
 
-        <Dropdown
-          style={styles.dropdown}
-          data={generos}
-          labelField="label"
-          valueField="value"
-          placeholder='Gênero'
-          value={genero}
-          onChange={item => { setGenero(item.value); }}
-        />
+        <View style={styles.input}>
+          <Text>Saciedade precoce</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#33ff00" }}
+            thumbColor={sacPrecoce ? "#ffffff" : "#f9f9f9"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => toggleSwitch('sacPrecoce')}
+            value={sacPrecoce}
+          />
+        </View>
+
+        <View style={styles.input}>
+          <Text>Dificuldade de abrir a boca</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#33ff00" }}
+            thumbColor={difAbrirBoca ? "#ffffff" : "#f9f9f9"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => toggleSwitch('difAbrirBoca')}
+            value={difAbrirBoca}
+          />
+        </View>
+
+        <View style={styles.input}>
+          <Text>Diarréia</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#33ff00" }}
+            thumbColor={diarreia ? "#ffffff" : "#f9f9f9"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => toggleSwitch('diarreia')}
+            value={diarreia}
+          />
+        </View>
+
+        <View style={styles.input}>
+          <Text>Constipação</Text>
+          <Switch
+            trackColor={{ false: "#767577", true: "#33ff00" }}
+            thumbColor={constipacao ? "#ffffff" : "#f9f9f9"}
+            ios_backgroundColor="#3e3e3e"
+            onValueChange={() => toggleSwitch('constipacao')}
+            value={constipacao}
+          />
+        </View>
 
         <View style={styles.buttonAcess}>
-          {/* <TouchableOpacity style={styles.button} onPress={handleAdvance}> */}
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity style={styles.button} onPress={handleAdvance}>
+          {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}> */}
           <Text style={styles.buttonText}>Avançar</Text>
-          </TouchableOpacity>
-          
-          <TouchableOpacity style={styles.buttonSignIn} onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.buttonSignInText}>Já possui conta? Entre</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -103,11 +164,15 @@ const styles = StyleSheet.create({
   },
 
   input: {
-    borderBottomWidth: 1,
-    height: 30,
-    marginTop: 25,
-    marginBottom: 12,
-    fontSize: 16,
+    backgroundColor: "#DDDDDD",
+    borderWidth: 0.3,
+    borderRadius: 10,
+    padding: 4,
+    marginTop: 20,
+    flex: 0.25,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 
   dropdown: {
