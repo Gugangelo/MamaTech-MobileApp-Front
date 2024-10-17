@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { useNavigation } from '@react-navigation/native';
+import Result from './Result';
 
 
 export default function Index() {
@@ -12,6 +13,7 @@ export default function Index() {
   const [difAbrirBoca, setDifAbrirBoca] = useState(false);
   const [diarreia, setDiarreia] = useState(false);
   const [constipacao, setConstipacao] = useState(false);
+  const [resultCheck, setResultCheck] = useState()
 
   const toggleSwitch = (switchName) => {
     switch (switchName) {
@@ -39,7 +41,11 @@ export default function Index() {
   };
 
   const handleAdvance = () => {
-    console.log(difEngolir)
+    if (resultCheck == null) {
+      setResultCheck(1)
+    } else {
+      setResultCheck(null)
+    }
   }
 
 
@@ -49,7 +55,7 @@ export default function Index() {
         <Text style={styles.title}>TELA CHECKLIST</Text>
       </Animatable.View>
 
-      <View style={styles.containerForm}>
+      <ScrollView style={styles.containerForm}>
         <View style={styles.input}>
           <Text>Dificuldade de engolir</Text>
           <Switch
@@ -116,13 +122,23 @@ export default function Index() {
           />
         </View>
 
+        { resultCheck == null
+        ?
         <View style={styles.buttonAcess}>
           <TouchableOpacity style={styles.button} onPress={handleAdvance}>
           {/* <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}> */}
-          <Text style={styles.buttonText}>Avançar</Text>
+            <Text style={styles.buttonText}>Avançar</Text>
           </TouchableOpacity>
         </View>
-      </View>
+        :
+        <View style={styles.resultRecommendation}>
+          <Result />
+          <TouchableOpacity style={styles.button} onPress={handleAdvance}>
+            <Text style={styles.buttonText}>Voltar</Text>
+          </TouchableOpacity>
+        </View>
+      }
+      </ScrollView>
     </View>
   );
 };
@@ -133,6 +149,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#C19B8F",
     padding: 20,
+    paddingBottom: -20
   },
 
   containerHeader: {
@@ -158,11 +175,6 @@ const styles = StyleSheet.create({
     paddingEnd: "5%"
   },
 
-  label: {
-    fontSize: 20,
-    marginTop: 20,
-  },
-
   input: {
     backgroundColor: "#DDDDDD",
     borderWidth: 0.3,
@@ -174,7 +186,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
-
+  
   dropdown: {
     marginTop: 10,
     marginBottom: 10,
@@ -184,25 +196,45 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
   },
-
+  
   buttonAcess: {
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: "center",
     marginBottom: 20
   },
-
+  
   button: {
     backgroundColor: '#5F5D19',
     padding: 10,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 20
   },
-
+  
   buttonText: {
     color: '#fff',
     fontSize: 18,
   },
+  
+  resultRecommendation: {
+    flex: 1,
+    backgroundColor: "#C19B8F",
+    justifyContent: "center",
+    borderRadius: 10,
+    marginTop: 30,
+    marginBottom: 30,
+    padding: 8,
+    height: "auto"
+  },
 
+  resultRecommendationText: {
+    backgroundColor: "#FFFFAD",
+    borderRadius: 10,
+    fontSize: 12,
+    marginTop: 20,
+    padding: 4
+  },
+  
   buttonSignIn: {
     marginTop: 14,
     alignSelf: "center"
