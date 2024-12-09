@@ -13,7 +13,7 @@ export default function ItemMenu(props) {
       <TouchableOpacity style={styles.item} onPress={() => navigation.navigate(props.navigateTo)}>
 
         <View style={styles.icon}>
-          <Feather style={styles.home} name="home" size={36} color="#000" />
+          <Feather style={styles.home} name={props.icon} size={36} color="#000" />
           {/* {icon} */}
         </View>
 

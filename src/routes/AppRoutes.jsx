@@ -9,6 +9,7 @@ import IndexHome from '../pages/Home/Index'
 import IndexBottomTabScreen from '../pages/BottomTabNavigator/Index'
 import IndexIMC from '../pages/IMC/Index'
 import IndexChecklist from '../pages/ChecklistDiario/Index'
+import IndexANPREC from '../pages/QuestionarioANPREC/Index'
 
 
 const AppStack = createNativeStackNavigator()
@@ -27,6 +28,7 @@ export default function AppRoutes() {
     
       <AppStack.Screen name="IMC" component={IndexIMC} options={{ headerShown: false} } />
       <AppStack.Screen name="Checklist" component={IndexChecklist} options={{ headerShown: false} } />
-    </AppStack.Navigator>
+      <AppStack.Screen name="QuestionarioANPREC" component={IndexANPREC} options={{ headerShown: false} } />
+      </AppStack.Navigator>
   )
 }

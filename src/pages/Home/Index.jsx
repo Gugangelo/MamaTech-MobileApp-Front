@@ -22,15 +22,15 @@ export default function Index() {
         </View>
 
         <View style={styles.itemRow}>
-          <ItemMenu itemTitle="Checklist diário" navigateTo="Checklist"></ItemMenu>
-          <ItemMenu itemTitle="Cálculo do IMC" navigateTo="IMC"></ItemMenu>
-          <ItemMenu itemTitle="Dados Cadastrais" navigateTo="IMC"></ItemMenu>
-          <ItemMenu itemTitle="Chat para dúvidas" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Checklist diário" navigateTo="Checklist" icon="file-text"></ItemMenu>
+          <ItemMenu itemTitle="Cálculo do IMC" navigateTo="IMC" icon="file-plus"></ItemMenu>
+          <ItemMenu itemTitle="Dados Cadastrais" navigateTo="IMC" icon="user"></ItemMenu>
+          <ItemMenu itemTitle="TESTE DO ANPREC" navigateTo="QuestionarioANPREC" icon="check-square"></ItemMenu>
         </View>
 
         <View style={styles.itemRow}>
-          <ItemMenu itemTitle="Receitas" navigateTo="IMC"></ItemMenu>
-          <ItemMenu itemTitle="Consumo de água" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="Receitas" navigateTo="IMC" icon="coffee"></ItemMenu>
+          <ItemMenu itemTitle="Consumo de água" navigateTo="IMC" icon="droplet"></ItemMenu>
           <ItemMenu itemTitle="Autoexame" navigateTo="IMC"></ItemMenu>
           <ItemMenu itemTitle="Alimentos cancerígenos" navigateTo="IMC"></ItemMenu>
         </View>
@@ -43,7 +43,7 @@ export default function Index() {
         </View>
 
         <View style={styles.itemRow}>
-          <ItemMenu itemTitle="E-Books" navigateTo="IMC"></ItemMenu>
+          <ItemMenu itemTitle="E-Books" navigateTo="IMC" icon="book"></ItemMenu>
           <ItemMenu itemTitle="Como ler um rótulo?" navigateTo="IMC"></ItemMenu>
           <ItemMenu itemTitle="SuperTeg" navigateTo="IMC"></ItemMenu>
           <ItemMenu itemTitle="Amparo" navigateTo="IMC"></ItemMenu>
